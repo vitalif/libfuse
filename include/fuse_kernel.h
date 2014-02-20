@@ -358,6 +358,7 @@ enum fuse_opcode {
 	FUSE_FALLOCATE     = 43,
 	FUSE_READDIRPLUS   = 44,
 	FUSE_RENAME2       = 45,
+	FUSE_FIEMAP        = 47,
 
 	/* CUSE specific operations */
 	CUSE_INIT          = 4096,
@@ -623,6 +624,13 @@ struct fuse_bmap_in {
 
 struct fuse_bmap_out {
 	uint64_t	block;
+};
+
+struct fuse_fiemap_in {
+	__u32	flags;
+	__u32	extents_max;
+	__u64	start;
+	__u64	len;
 };
 
 struct fuse_ioctl_in {
